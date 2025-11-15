@@ -11,7 +11,11 @@ namespace GoogleAuthenticatorInAspNetWF
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["LoggedInUser"] == null)
+            {
+                Response.Redirect("/Views/Login.aspx");
+            }
+            lblWelcome.Text = "Welcome! You have logged in with 2FA.";
         }
     }
 }
